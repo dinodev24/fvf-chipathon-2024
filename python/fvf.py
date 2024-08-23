@@ -20,7 +20,17 @@ def  flipped_voltage_follower(
         with_tie: bool = True,
         tie_layers: tuple[str,str] = ("met2","met1"),
         ):
-   
+         """
+         Args:
+              pdk: PDK to use
+              device_type: either "nmos"(default) or "pmos"
+              wid: width of the input mos([0]) and feedback mos([1])
+              len: length of the input mos([0]) and feedback mos([1]), default to minimum length
+              finger: no. of fingers for input mos([0]) and feedback mos([1])
+              multiplier: no. of multipliers for input mos([0]) and feedback mos([1])
+              dummy_1: dummy structure for input mos
+              dummy_2: dummy structure for feedback mos
+         """
     #top level component
     top_level = Component()
 
