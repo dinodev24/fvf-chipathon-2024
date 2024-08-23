@@ -26,13 +26,8 @@ C {devices/lab_pin.sym} -340 100 1 0 {name=p1 sig_type=std_logic lab=Vin}
 C {devices/lab_pin.sym} -70 -20 0 0 {name=p2 sig_type=std_logic lab=Vin}
 C {devices/code_shown.sym} 0 120 0 0 {name=SPICE
 only_toplevel=false
-value=".control
-    ac dec 20 1 1e8
-    let vout_mag = abs(v(Vout))
-    meas ac A0 find vout_mag at=1
-    meas ac UGF when vout_mag=1 fall=1
-    echo $&A0 $&UGF
-.endc"}
+value=".ac dec 20 1 1e8
+.save all"}
 C {devices/isource.sym} -280 0 0 0 {name=I0 value=1u}
 C {/foss/designs/fvf-chipathon-2024/xschem/fvf.sym} 0 0 0 0 {name=X1}
 C {devices/vsource.sym} -340 130 0 0 {name=Vin1
