@@ -1,0 +1,2 @@
+onoise_total = 1.597358E-4
+inoise_total = 5.310186E-4

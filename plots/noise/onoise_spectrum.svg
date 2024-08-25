@@ -1,0 +1,103 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+  width="100%" height="100%" viewBox="0 0 1024 768"
+  style="fill: none; font-family: Helvetica;
+ font: Helvetica;
+">
+
+<!-- Creator: NGspice -->
+
+<rect x="0" y="0" width="1024" height="768" fill="black" stroke="none"/>
+<text stroke="none" fill="white" font-size="16" x="358" y="752">
+frequency
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="16">
+noise1: ** sch_path: /foss/designs/fvf-chipathon-2024/xschem/fvf_tb_noise.sch
+</text>
+<path stroke="white" d="M50 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="30" y="728">
+10^3
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M84 720l0 -672M104 720l0 -672M119 720l0 -672M130 720l0 -672M139 720l0 -672M147 720l0 -672M153 720l0 -672M159 720l0 -672"/>
+<path stroke="white" d="M165 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="145" y="728">
+10^4
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M199 720l0 -672M219 720l0 -672M234 720l0 -672M245 720l0 -672M254 720l0 -672M262 720l0 -672M268 720l0 -672M274 720l0 -672"/>
+<path stroke="white" d="M280 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="260" y="728">
+10^5
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M314 720l0 -672M334 720l0 -672M349 720l0 -672M360 720l0 -672M369 720l0 -672M377 720l0 -672M383 720l0 -672M389 720l0 -672"/>
+<path stroke="white" d="M395 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="375" y="728">
+10^6
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M429 720l0 -672M449 720l0 -672M464 720l0 -672M475 720l0 -672M484 720l0 -672M492 720l0 -672M498 720l0 -672M504 720l0 -672"/>
+<path stroke="white" d="M510 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="490" y="728">
+10^7
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M544 720l0 -672M564 720l0 -672M579 720l0 -672M590 720l0 -672M599 720l0 -672M607 720l0 -672M613 720l0 -672M619 720l0 -672"/>
+<path stroke="white" d="M625 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="605" y="728">
+10^8
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M659 720l0 -672M679 720l0 -672M694 720l0 -672M705 720l0 -672M714 720l0 -672M722 720l0 -672M728 720l0 -672M734 720l0 -672"/>
+<path stroke="white" d="M740 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="720" y="728">
+10^9
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M774 720l0 -672M794 720l0 -672M809 720l0 -672M820 720l0 -672M829 720l0 -672M837 720l0 -672M843 720l0 -672M849 720l0 -672"/>
+<path stroke="white" d="M855 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="830" y="728">
+10^10
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M889 720l0 -672M909 720l0 -672M924 720l0 -672M935 720l0 -672M944 720l0 -672M952 720l0 -672M958 720l0 -672M964 720l0 -672"/>
+<path stroke="white" d="M970 720l0 -672"/>
+<text stroke="none" fill="white" font-size="16" x="945" y="728">
+10^11
+</text>
+<text stroke="none" fill="white" font-size="16" x="614" y="752">
+Hz
+</text>
+<path stroke="white" d="M50 720l920 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="728">
+0.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M50 608l920 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="616">
+0.5
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M50 496l920 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="504">
+1.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M50 384l920 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="392">
+1.5
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M50 272l920 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="280">
+2.0
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M50 160l920 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="168">
+2.5
+</text>
+<path stroke="white" stroke-dasharray="1,2" d="M50 48l920 0"/>
+<text stroke="none" fill="white" font-size="16" x="18" y="56">
+3.0
+</text>
+<text stroke="none" fill="white" font-size="16" x="10" y="32">
+uV/sqrt(Hz)
+</text>
+<path stroke="red" d="M460 23l46 0"/>
+<text stroke="none" fill="white" font-size="16" x="516" y="32">
+v(onoise_spectrum)
+</text>
+<path stroke="red" d="M50 129l12 56 5 29 12 56 5 27 6 25 6 24 6 23 5 21 12 38 6 18 5 18 12 34 6 16 5 16 12 30 6 14 5 13 6 13 12 22 5 10 6 9 6 8 6 7 5 7 12 12 6 4 5 5 6 4 12 6 5 3 6 3 12 4 5 2 12 2 6 2 5 1 18 3 5 0 6 1 6 0 6 1 5 0 6 1 12 0 5 1"/>
+<path stroke="red" d="M383 718l18 0 5 1 52 0 6 1 506 0"/>
+</svg>
