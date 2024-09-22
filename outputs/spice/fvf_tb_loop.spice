@@ -1,0 +1,37 @@
+** sch_path: /foss/designs/fvf-chipathon-2024/xschem/fvf_tb_loop.sch
+**.subckt fvf_tb_loop Vout
+*.opin Vout
+Vin VCC GND 1.8
+Vin1 VIN GND 1.8 AC 1
+I1 IBIAS GND 1u
+XM1 Vout VIN net1 GND sky130_fd_pr__nfet_01v8 L=1 W=15 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 net1 net2 GND GND sky130_fd_pr__nfet_01v8 L=1 W=15 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+L1 Vout net2 1T m=1
+C1 net2 GND 1T m=1
+C2 Vout GND 71.72f m=1
+**** begin user architecture code
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /foss/pdks/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /foss/pdks/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /foss/pdks/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /foss/pdks/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+
+.control
+    ac dec 20 1 1e8
+    save all
+
+    set wr_vecnames
+    wrdata loop_vout.txt v(vout)
+    exit
+.endc
+
+**** end user architecture code
+**.ends
+.GLOBAL VCC
+.GLOBAL GND
+.end
