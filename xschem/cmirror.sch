@@ -19,7 +19,7 @@ N -80 30 -0 30 {
 lab=IIN}
 C {devices/ipin.sym} -80 30 3 0 {name=p4 lab=IIN}
 C {devices/iopin.sym} -80 -50 3 0 {name=p1 lab=VCC}
-C {sky130_fd_pr/pfet3_01v8_lvt.sym} -60 0 0 1 {name=M3
+C {sky130_fd_pr/pfet3_01v8_lvt.sym} -60 0 0 1 {name=M1
 L=1
 W=2
 body=VCC
@@ -34,7 +34,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8_lvt
 spiceprefix=X
 }
-C {sky130_fd_pr/pfet3_01v8_lvt.sym} 60 0 0 0 {name=M4
+C {sky130_fd_pr/pfet3_01v8_lvt.sym} 60 0 0 0 {name=M2
 L=1
 W=2
 body=VCC
