@@ -5,10 +5,11 @@ K {}
 V {}
 S {}
 E {}
-C {/foss/designs/fvf-chipathon-2024/xschem/cmirror.sym} 0 0 0 0 {}
-C {/foss/designs/fvf-chipathon-2024/xschem/fvf.sym} 30 110 0 0 {name=X1}
-C {devices/vdd.sym} 0 -60 0 0 {name=l1 lab=VCC}
+T {@name} 40 50 0 0 0.4 0.4 {}
 C {devices/ipin.sym} -30 60 0 0 {name=p4 lab=IBIAS}
-C {devices/gnd.sym} 30 160 0 0 {name=l2 lab=GND}
 C {devices/ipin.sym} -30 110 0 0 {name=p1 lab=VIN}
 C {devices/opin.sym} 90 110 0 0 {name=p2 lab=VOUT}
+C {devices/iopin.sym} 30 160 1 0 {name=p3 lab=GND}
+C {devices/iopin.sym} 0 -60 3 0 {name=p5 lab=VCC}
+C {/foss/designs/fvf-chipathon-2024/xschem/fvf.sym} 30 110 0 0 {name=X1}
+C {/foss/designs/fvf-chipathon-2024/xschem/cmirror.sym} 0 0 0 0 {name=X2}

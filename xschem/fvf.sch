@@ -26,7 +26,7 @@ C {devices/opin.sym} 10 50 0 0 {name=p3 lab=VOUT}
 C {devices/iopin.sym} 0 130 1 0 {name=p5 lab=GND}
 C {sky130_fd_pr/nfet3_01v8.sym} 20 0 0 1 {name=M1
 L=1
-W=15
+W=20
 body=VOUT
 nf=1
 mult=1
@@ -41,7 +41,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet3_01v8.sym} 20 100 0 1 {name=M2
 L=1
-W=15
+W=20
 body=GND
 nf=1
 mult=1

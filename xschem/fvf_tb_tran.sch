@@ -21,9 +21,8 @@ value=".control
     set wr_vecnames
     wrdata transient_vin.txt v(vin)
     wrdata transient_vout.txt v(vout)
-    exit
 .endc"}
-C {devices/isource.sym} -410 0 0 0 {name=I0 value=2.5u}
+C {devices/isource.sym} -410 0 0 0 {name=I0 value=3u}
 C {devices/vsource.sym} -350 0 0 0 {name=Vin1
 value="pulse(0 1.8 10ns 10ns 10ns 40ns 100ns)"
 savecurrent=false}
@@ -33,4 +32,4 @@ C {devices/lab_pin.sym} 60 0 0 1 {name=p3 sig_type=std_logic lab=Vout}
 C {devices/lab_pin.sym} -60 20 0 0 {name=p4 sig_type=std_logic lab=IBIAS}
 C {devices/lab_pin.sym} -60 -20 0 0 {name=p6 sig_type=std_logic lab=VIN}
 C {devices/vdd.sym} -470 -30 0 0 {name=l1 lab=VCC}
-C {/foss/designs/fvf-chipathon-2024/xschem/n_fvf_cell.sym} 0 0 0 0 {}
+C {/foss/designs/fvf-chipathon-2024/xschem/n_fvf_cell.sym} 0 0 0 0 {name=X1}

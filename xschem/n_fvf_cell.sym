@@ -1,7 +1,9 @@
 v {xschem version=3.4.5 file_version=1.2
 }
 G {}
-K {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=X1"}
 V {}
 S {}
 E {}
@@ -14,8 +16,8 @@ L 4 -40 -40 40 -40 {}
 L 4 -40 40 40 40 {}
 L 4 -60 -20 -40 -20 {}
 L 4 -60 20 -40 20 {}
-B 5 -2.5 -62.5 2.5 -57.5 {name=Ib
-dir=in}
+B 5 -2.5 -62.5 2.5 -57.5 {name=VCC
+dir=inout}
 B 5 -2.5 57.5 2.5 62.5 {name=GND
 dir=inout}
 B 5 -62.5 -22.5 -57.5 -17.5 {name=VIN

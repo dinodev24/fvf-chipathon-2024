@@ -1,7 +1,9 @@
 v {xschem version=3.4.5 file_version=1.2
 }
 G {}
-K {}
+K {type=subcircuit
+format="@name @pinlist @symname"
+template="name=cm1"}
 V {}
 S {}
 E {}
@@ -9,7 +11,7 @@ L 4 -60 -40 60 -40 {}
 L 4 60 -40 60 40 {}
 L 4 -60 40 60 40 {}
 L 4 -60 -40 -60 40 {}
-L 4 -0 -60 0 -40 {}
+L 4 0 -60 0 -40 {}
 L 4 -30 40 -30 60 {}
 L 4 30 40 30 60 {}
 B 5 -2.5 -62.5 2.5 -57.5 {name=VCC
@@ -24,3 +26,4 @@ T {IIN} -50 10 0 0 0.4 0.4 {
 }
 T {IOUT} 10 10 0 0 0.4 0.4 {
 }
+T {@name} 10 -70 0 0 0.4 0.4 {}
