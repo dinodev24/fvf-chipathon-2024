@@ -23,8 +23,9 @@ value=".control
     wrdata ac_cph_vout.txt 180*cph(v(vout))/pi
     wrdata ac_db_vout.txt db(v(vout))
     wrdata ac_vout.txt v(vout)
+    exit
 .endc"}
-C {devices/isource.sym} -280 0 0 0 {name=I0 value=3u}
+C {devices/isource.sym} -280 0 0 0 {name=I0 value=10u}
 C {devices/vsource.sym} -220 0 0 0 {name=V1
 value="1.8 AC 1"
 savecurrent=false}
