@@ -74,7 +74,6 @@ value=".control
 
     set wr_vecnames
     wrdata loop_vout.txt v(vout)
-    exit
 .endc"}
 C {devices/vsource.sym} -250 0 0 0 {name=Vin1
 value="1.8 AC 1"
@@ -104,8 +103,8 @@ C {devices/gnd.sym} 320 260 0 1 {name=l9 lab=GND}
 C {devices/vdd.sym} -30 -40 0 0 {name=l8 lab=VCC}
 C {devices/lab_pin.sym} -30 30 3 0 {name=p4 sig_type=std_logic lab=IBIAS}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -10 0 0 1 {name=M3
-L=1
-W=2
+L=3
+W=1.88
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -118,8 +117,8 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 110 0 0 0 {name=M4
-L=1
-W=2
+L=3
+W=1.88
 nf=1
 mult=2
 ad="'int((nf+1)/2) * W/nf * 0.29'" 

@@ -23,7 +23,6 @@ value=".control
     setplot noise1
     wrdata noise_inoise_spectrum.txt inoise_spectrum
     wrdata noise_onoise_spectrum.txt onoise_spectrum
-    exit
 .endc"}
 C {devices/isource.sym} -280 0 0 0 {name=I0 value=10u}
 C {devices/vsource.sym} -220 0 0 0 {name=V2

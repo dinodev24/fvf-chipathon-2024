@@ -21,7 +21,6 @@ value=".control
     set wr_vecnames
     wrdata transient_vin.txt v(vin)
     wrdata transient_vout.txt v(vout)
-    exit
 .endc"}
 C {devices/isource.sym} -410 0 0 0 {name=I0 value=10u}
 C {devices/vsource.sym} -350 0 0 0 {name=Vin1
