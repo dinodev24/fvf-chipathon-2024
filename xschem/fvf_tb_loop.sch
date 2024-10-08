@@ -132,10 +132,10 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 320 40 2 0 {name=p3 sig_type=std_logic lab=VOUT}
-C {sky130_fd_pr/nfet_01v8.sym} 150 80 0 1 {name=M1
+C {sky130_fd_pr/nfet3_01v8.sym} 150 180 0 1 {name=M1
 L=2.5
 W=1.117691
-body=VOUT
+body=GND
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -147,7 +147,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {sky130_fd_pr/nfet3_01v8.sym} 150 180 0 1 {name=M2
+C {sky130_fd_pr/nfet_01v8.sym} 150 80 0 1 {name=M2
 L=0.6
 W=1.174662
 body=GND
