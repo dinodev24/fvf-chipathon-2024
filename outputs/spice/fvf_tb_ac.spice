@@ -2,7 +2,7 @@
 **.subckt fvf_tb_ac
 V0 VCC GND 1.8
 I0 IBIAS GND 10u
-V1 VIN GND 0 AC 1
+V1 VIN GND 1 AC 1
 X1 VCC GND VIN VOUT IBIAS n_fvf_cell
 **** begin user architecture code
 
@@ -49,10 +49,10 @@ X2 VCC IBIAS net1 cmirror
 *.opin VOUT
 *.iopin GND
 *.ipin Ib
-XM1 VOUT Ib GND GND sky130_fd_pr__nfet_01v8 L=2.5 W=1.117691 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM2 Ib VIN VOUT VOUT sky130_fd_pr__nfet_01v8 L=0.6 W=1.174662 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM1 VOUT Ib GND GND sky130_fd_pr__nfet_01v8 L=0.8 W=1.29 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 Ib VIN VOUT VOUT sky130_fd_pr__nfet_01v8 L=0.3 W=0.59 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
 
@@ -63,10 +63,10 @@ XM2 Ib VIN VOUT VOUT sky130_fd_pr__nfet_01v8 L=0.6 W=1.174662 nf=1 ad='int((nf+1
 *.ipin IIN
 *.iopin VCC
 *.opin IOUT
-XM1 IIN IIN VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=1.88 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
-+ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
-XM2 IOUT IIN VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=1.88 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
+XM1 IIN IIN VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=3.8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 IOUT IIN VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=3.8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
 .GLOBAL GND

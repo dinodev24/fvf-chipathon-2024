@@ -1,19 +1,20 @@
 ** sch_path: /foss/designs/fvf-chipathon-2024/xschem/fvf_tb_loop.sch
 **.subckt fvf_tb_loop
 Vin VCC GND 1.8
-Vin1 VIN GND 1.8 AC 1
+Vin1 VIN GND 1.8
 I1 IBIAS GND 10u
 L1 VOUT net2 1T m=1
-C1 net2 GND 1T m=1
-C2 VOUT GND 4.18585736f m=1
-XM3 IBIAS IBIAS VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=1.88 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
-XM4 VOUT IBIAS VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=1.88 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=2 m=2
-XM1 net1 net2 GND GND sky130_fd_pr__nfet_01v8 L=2.5 W=1.117691 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+C1 net2 net3 1T m=1
+C2 VOUT GND 6f m=1
+XM3 IBIAS IBIAS VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=3.8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM2 VOUT VIN net1 net1 sky130_fd_pr__nfet_01v8 L=0.6 W=1.174662 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM4 VOUT IBIAS VCC VCC sky130_fd_pr__pfet_01v8_lvt L=3 W=3.8 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM1 net1 net2 GND GND sky130_fd_pr__nfet_01v8 L=0.6 W=1.83 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 VOUT VIN net1 net1 sky130_fd_pr__nfet_01v8 L=0.6 W=1.18 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+Vin2 net3 GND 0.77 AC 1
 **** begin user architecture code
 
 .param mc_mm_switch=0
