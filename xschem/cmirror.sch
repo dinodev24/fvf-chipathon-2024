@@ -34,9 +34,9 @@ C {devices/iopin.sym} -90 -40 3 0 {name=p1 lab=VCC}
 C {devices/opin.sym} 80 30 1 0 {name=p3 lab=IOUT}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -60 0 0 1 {name=M1
 L=3
-W=1.88
+W=3.8
 nf=1
-mult=2
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -48,9 +48,9 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8_lvt.sym} 60 0 0 0 {name=M2
 L=3
-W=1.88
+W=3.8
 nf=1
-mult=2
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
