@@ -130,9 +130,13 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 320 40 2 0 {name=p3 sig_type=std_logic lab=VOUT}
+C {devices/gnd.sym} 180 320 0 0 {name=l10 lab=GND}
+C {devices/vsource.sym} 180 290 0 0 {name=Vin2
+value="0.77 AC 1"
+savecurrent=false}
 C {sky130_fd_pr/nfet3_01v8.sym} 150 180 0 1 {name=M1
-L=0.6
-W=1.83
+L=0.8	
+W=1.29
 body=GND
 nf=1
 mult=1
@@ -146,9 +150,9 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 150 80 0 1 {name=M2
-L=0.6
-W=1.18
-body=GND
+L=0.3
+W=0.59
+body=VOUT
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -160,7 +164,3 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {devices/gnd.sym} 180 320 0 0 {name=l10 lab=GND}
-C {devices/vsource.sym} 180 290 0 0 {name=Vin2
-value="0.77 AC 1"
-savecurrent=false}

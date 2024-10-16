@@ -26,7 +26,7 @@ value=".control
 .endc"}
 C {devices/isource.sym} -280 0 0 0 {name=I0 value=10u}
 C {devices/vsource.sym} -220 0 0 0 {name=V2
-value="1.8 AC 1"
+value="1.25 AC 0.2"
 savecurrent=false}
 C {devices/gnd.sym} -280 30 0 0 {name=l5 lab=GND}
 C {devices/lab_pin.sym} -60 20 0 0 {name=p4 sig_type=std_logic lab=IBIAS}

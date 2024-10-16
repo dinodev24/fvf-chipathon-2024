@@ -2,7 +2,7 @@
 **.subckt fvf_tb_ac
 V0 VCC GND 1.8
 I0 IBIAS GND 10u
-V1 VIN GND 1 AC 1
+V1 VIN GND 1.25 AC 0.2
 X1 VCC GND VIN VOUT IBIAS n_fvf_cell
 **** begin user architecture code
 
