@@ -76,7 +76,7 @@ value=".control
     wrdata loop_vout.txt v(vout)
 .endc"}
 C {devices/vsource.sym} -250 0 0 0 {name=Vin1
-value="1.8"
+value="1 AC 1"
 savecurrent=false}
 C {devices/isource.sym} -310 0 0 0 {name=I1 value=10u}
 C {devices/gnd.sym} -310 30 0 0 {name=l7 lab=GND}
