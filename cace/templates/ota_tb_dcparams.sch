@@ -270,27 +270,27 @@ lab=#net9}
 N -450 550 -380 550 {
 lab=#net9}
 N -280 550 -280 580 {
-lab=#net11}
+lab=GND}
 N -280 640 -280 690 {
-lab=#net12}
+lab=#net11}
 N -240 720 -210 720 {
-lab=#net11}
+lab=GND}
 N -210 550 -210 720 {
-lab=#net11}
+lab=GND}
 N -280 550 -210 550 {
-lab=#net11}
+lab=GND}
 N -70 550 -70 580 {
 lab=Iin1}
 N -70 640 -70 690 {
-lab=#net13}
+lab=#net12}
 N -410 610 -380 610 {
 lab=#net9}
 N -210 720 -110 720 {
-lab=#net11}
+lab=GND}
 N -450 520 -450 550 {
 lab=#net9}
 N -280 520 -280 550 {
-lab=#net11}
+lab=GND}
 N -380 610 -320 610 {
 lab=#net9}
 N -320 570 -320 610 {
@@ -302,17 +302,19 @@ lab=#net9}
 N 70 550 70 580 {
 lab=Iin2}
 N 70 640 70 690 {
-lab=#net14}
+lab=#net13}
 N 30 570 30 610 {
 lab=#net9}
 N -140 670 -140 720 {
-lab=#net11}
+lab=GND}
 N -140 670 30 670 {
-lab=#net11}
+lab=GND}
 N 30 670 30 720 {
-lab=#net11}
+lab=GND}
 N -110 570 30 570 {
 lab=#net9}
+N -180 770 -180 780 {
+lab=#net14}
 C {sky130_fd_pr/nfet_01v8.sym} 240 120 0 1 {name=M1B
 W=2.75
 L=1.5
@@ -571,11 +573,6 @@ C {devices/gnd.sym} 120 -170 0 0 {name=l23 lab=GND}
 C {devices/lab_pin.sym} -220 0 1 0 {name=p8 sig_type=std_logic lab=CM1}
 C {devices/lab_pin.sym} 300 410 3 0 {name=p9 sig_type=std_logic lab=CM1}
 C {devices/lab_pin.sym} 220 0 1 0 {name=p7 sig_type=std_logic lab=CM2}
-C {devices/capa.sym} 370 350 0 0 {name=C2
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
 C {devices/vdd.sym} -80 320 0 0 {name=l7 lab=VCC}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -60 380 0 1 {name=CM3
 W=1.88
@@ -606,11 +603,6 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {devices/lab_pin.sym} -80 410 3 0 {name=p11 sig_type=std_logic lab=CM2}
-C {devices/capa.sym} -10 350 0 0 {name=C3
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
 C {devices/vcvs.sym} -620 -40 0 1 {name=E1 value=0.5}
 C {devices/vcvs.sym} -460 -40 0 0 {name=E2 value=-0.5}
 C {devices/vsource.sym} -720 80 0 0 {name=Vdm value="ac 1" savecurrent=false}
@@ -749,12 +741,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 70 750 0 0 {name=l19 lab=GND}
-C {devices/capa.sym} -180 750 0 0 {name=C4
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
-C {devices/gnd.sym} -180 780 0 0 {name=l24 lab=GND}
+C {devices/gnd.sym} -180 720 0 0 {name=l24 lab=GND}
 C {devices/lab_pin.sym} 460 410 3 0 {name=p3 sig_type=std_logic lab=Iin1}
 C {devices/lab_pin.sym} 80 410 1 1 {name=p10 sig_type=std_logic lab=Iin2}
 C {devices/vdd.sym} -450 460 0 0 {name=l4 lab=VCC}

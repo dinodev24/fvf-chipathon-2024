@@ -236,27 +236,27 @@ lab=#net7}
 N -460 550 -390 550 {
 lab=#net7}
 N -290 550 -290 580 {
-lab=#net9}
+lab=GND}
 N -290 640 -290 690 {
-lab=#net10}
+lab=#net9}
 N -250 720 -220 720 {
-lab=#net9}
+lab=GND}
 N -220 550 -220 720 {
-lab=#net9}
+lab=GND}
 N -290 550 -220 550 {
-lab=#net9}
+lab=GND}
 N -80 550 -80 580 {
 lab=Iin1}
 N -80 640 -80 690 {
-lab=#net11}
+lab=#net10}
 N -420 610 -390 610 {
 lab=#net7}
 N -220 720 -120 720 {
-lab=#net9}
+lab=GND}
 N -460 520 -460 550 {
 lab=#net7}
 N -290 520 -290 550 {
-lab=#net9}
+lab=GND}
 N -390 610 -330 610 {
 lab=#net7}
 N -330 570 -330 610 {
@@ -268,15 +268,15 @@ lab=#net7}
 N 60 550 60 580 {
 lab=Iin2}
 N 60 640 60 690 {
-lab=#net12}
+lab=#net11}
 N 20 570 20 610 {
 lab=#net7}
 N -150 670 -150 720 {
-lab=#net9}
+lab=GND}
 N -150 670 20 670 {
-lab=#net9}
+lab=GND}
 N 20 670 20 720 {
-lab=#net9}
+lab=GND}
 N -120 570 20 570 {
 lab=#net7}
 C {sky130_fd_pr/nfet_01v8.sym} 240 120 0 1 {name=M1B
@@ -549,11 +549,6 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 290 410 3 0 {name=p9 sig_type=std_logic lab=CM1}
-C {devices/capa.sym} 360 350 0 0 {name=C2
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
 C {devices/vdd.sym} -90 320 0 0 {name=l7 lab=VCC}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -70 380 0 1 {name=CM3
 W=1.88
@@ -584,11 +579,6 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {devices/lab_pin.sym} -90 410 3 0 {name=p11 sig_type=std_logic lab=CM2}
-C {devices/capa.sym} -20 350 0 0 {name=C3
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
 C {devices/isource.sym} -460 490 0 0 {name=I0 value=CACE\{IBIAS\}}
 C {devices/isource.sym} -290 490 0 0 {name=I1 value=CACE\{IBIAS\}}
 C {sky130_fd_pr/nfet3_01v8.sym} -440 610 0 1 {name=M17
@@ -717,12 +707,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 60 750 0 0 {name=l19 lab=GND}
-C {devices/capa.sym} -190 750 0 0 {name=C4
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
-C {devices/gnd.sym} -190 780 0 0 {name=l24 lab=GND}
+C {devices/gnd.sym} -190 720 0 0 {name=l24 lab=GND}
 C {devices/lab_pin.sym} 450 410 3 0 {name=p3 sig_type=std_logic lab=Iin1}
 C {devices/lab_pin.sym} 70 410 1 1 {name=p10 sig_type=std_logic lab=Iin2}
 C {devices/vdd.sym} -460 460 0 0 {name=l4 lab=VCC}

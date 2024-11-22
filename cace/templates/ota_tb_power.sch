@@ -170,39 +170,39 @@ lab=#net4}
 N 0 -280 0 -200 {
 lab=#net5}
 N -540 -60 -500 -60 {
-lab=#net9}
+lab=#net7}
 N -720 -110 -720 50 {
-lab=#net9}
+lab=#net7}
 N -720 -110 -540 -110 {
-lab=#net9}
+lab=#net7}
 N -720 110 -720 130 {
 lab=GND}
 N -540 110 -540 130 {
 lab=GND}
 N -540 30 -460 30 {
-lab=#net10}
+lab=#net8}
 N -540 30 -540 50 {
-lab=#net10}
+lab=#net8}
 N -540 -20 -500 -20 {
 lab=GND}
 N -540 -20 -540 0 {
 lab=GND}
 N -620 -10 -620 30 {
-lab=#net10}
+lab=#net8}
 N -460 -10 -460 30 {
-lab=#net10}
+lab=#net8}
 N -540 -110 -540 -60 {
-lab=#net9}
+lab=#net7}
 N -460 -150 -460 -70 {
 lab=VINN}
 N -620 -150 -620 -70 {
 lab=VINP}
 N -620 30 -540 30 {
-lab=#net10}
+lab=#net8}
 N -580 -20 -540 -20 {
 lab=GND}
 N -580 -60 -540 -60 {
-lab=#net9}
+lab=#net7}
 N 480 380 490 380 {
 lab=VCC}
 N 490 350 490 380 {
@@ -270,27 +270,27 @@ lab=#net9}
 N -430 550 -360 550 {
 lab=#net9}
 N -260 550 -260 580 {
-lab=#net11}
+lab=GND}
 N -260 640 -260 690 {
-lab=#net12}
+lab=#net11}
 N -220 720 -190 720 {
-lab=#net11}
+lab=GND}
 N -190 550 -190 720 {
-lab=#net11}
+lab=GND}
 N -260 550 -190 550 {
-lab=#net11}
+lab=GND}
 N -50 550 -50 580 {
 lab=Iin1}
 N -50 640 -50 690 {
-lab=#net13}
+lab=#net12}
 N -390 610 -360 610 {
 lab=#net9}
 N -190 720 -90 720 {
-lab=#net11}
+lab=GND}
 N -430 520 -430 550 {
 lab=#net9}
 N -260 520 -260 550 {
-lab=#net11}
+lab=GND}
 N -360 610 -300 610 {
 lab=#net9}
 N -300 570 -300 610 {
@@ -302,15 +302,15 @@ lab=#net9}
 N 90 550 90 580 {
 lab=Iin2}
 N 90 640 90 690 {
-lab=#net14}
+lab=#net13}
 N 50 570 50 610 {
 lab=#net9}
 N -120 670 -120 720 {
-lab=#net11}
+lab=GND}
 N -120 670 50 670 {
-lab=#net11}
+lab=GND}
 N 50 670 50 720 {
-lab=#net11}
+lab=GND}
 N -90 570 50 570 {
 lab=#net9}
 C {sky130_fd_pr/nfet_01v8.sym} 240 120 0 1 {name=M1B
@@ -572,11 +572,6 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {devices/lab_pin.sym} 320 410 3 0 {name=p9 sig_type=std_logic lab=CM1}
-C {devices/capa.sym} 390 350 0 0 {name=C2
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
 C {devices/vdd.sym} -60 320 0 0 {name=l7 lab=VCC}
 C {sky130_fd_pr/pfet_01v8_lvt.sym} -40 380 0 1 {name=CM3
 W=1.88
@@ -607,11 +602,6 @@ model=pfet_01v8_lvt
 spiceprefix=X
 }
 C {devices/lab_pin.sym} -60 410 3 0 {name=p11 sig_type=std_logic lab=CM2}
-C {devices/capa.sym} 10 350 0 0 {name=C3
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
 C {devices/isource.sym} -430 490 0 0 {name=I0 value=CACE\{IBIAS\}}
 C {devices/isource.sym} -260 490 0 0 {name=I1 value=CACE\{IBIAS\}}
 C {sky130_fd_pr/nfet3_01v8.sym} -410 610 0 1 {name=M17
@@ -740,12 +730,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 90 750 0 0 {name=l19 lab=GND}
-C {devices/capa.sym} -160 750 0 0 {name=C4
-m=1
-value=10p
-footprint=1206
-device="ceramic capacitor"}
-C {devices/gnd.sym} -160 780 0 0 {name=l24 lab=GND}
+C {devices/gnd.sym} -160 720 0 0 {name=l24 lab=GND}
 C {devices/lab_pin.sym} 480 410 3 0 {name=p3 sig_type=std_logic lab=Iin1}
 C {devices/lab_pin.sym} 100 410 1 1 {name=p10 sig_type=std_logic lab=Iin2}
 C {devices/vdd.sym} -430 460 0 0 {name=l4 lab=VCC}
