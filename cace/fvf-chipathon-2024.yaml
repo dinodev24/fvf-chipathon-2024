@@ -1,0 +1,212 @@
+#--------------------------------------------------------------
+# CACE circuit characterization file
+#--------------------------------------------------------------
+
+name:           n_fvf_cell
+description:    A OTA built based on a flipped voltage follower
+PDK:            sky130A
+commit:         n/a
+
+cace_format:    5.2
+
+authorship:
+  designer:         Analog Vibes Team
+  company:          Analog Vibes Team
+  creation_date:    September 30, 2024
+  license:          Apache 2.0
+
+paths:
+  root:             ..
+  schematic:        xschem
+  layout:           gds
+  netlist:          netlist
+  documentation:    docs
+
+pins:
+  vcc:
+    description: Positive analog power supply
+    type: power
+    direction: inout
+    Vmin: 1.7
+    Vmax: 1.9
+  GND:
+    description: Analog ground
+    type: ground
+    direction: inout
+  IBIAS:
+    description: Bias current input
+    type: signal
+    direction: input
+  VINP:
+    description: Voltage positive input
+    type: signal
+    direction: input
+  VINN:
+    description: Voltage negative input
+    type: signal
+    direction: input
+  VOUT:
+    description: Voltage output
+    type: signal
+    direction: output
+
+default_conditions:
+  vcc:
+    description: Analog power supply voltage
+    display: vcc
+    unit: V
+    typical: 1.8
+  vcm:
+    description: Input common mode voltage
+    display: Vcm
+    unit: V
+    typical: 1.2
+  IBIAS:
+    description: Bias current
+    display: Ib
+    unit: uA
+    typical: 10.0
+  cl:
+    description: Output load capacitance
+    display: CLoad
+    unit: pF
+    maximum: 80
+  res:
+    description: Resistor Value
+    display: resval
+    unit: ohm
+    typical: 40k
+  corner:
+    description: Process corner
+    display: Corner
+    typical: tt
+  temperature:
+    description: Ambient temperature
+    display: Temp
+    unit: °C
+    typical: 27
+
+parameters:  
+  #dc_params:
+  #  display: DC Params
+  #  spec:
+  #    a0:
+  #      display: DC gain
+  #      description: The DC gain of the OTA
+  #      unit: dB
+  #      minimum:
+  #        value: any
+  #      typical:
+  #        value: any
+  #      maximum:
+  #        value: any
+  #    ugf:
+  #      display: Unity Gain Frequency
+  #      description: The unity gain frequency of the OTA
+  #      unit: Hz
+  #      minimum:
+  #        value: any
+  #      typical:
+  #        value: any
+  #      maximum:
+  #        value: any
+  #    pm:
+  #      display: Phase Margin
+  #      description: The phase margin of the OTA
+  #      unit: °
+  #      minimum:
+  #        value: any
+  #      typical:
+  #        value: any
+  #      maximum:
+  #        value: any
+  #  tool:
+  #    ngspice:
+  #      template: ota_tb_dcparams.sch
+  #      format: ascii
+  #      suffix: .data
+  #      variables: [a0, ugf, pm]
+  #  conditions:
+  #    corner:
+  #      enumerate: [ss, tt, ff]
+  #    vcc:
+  #      minimum: 1.7
+  #      typical: 1.8
+  #      maximum: 1.9
+  #    temperature:
+  #      minimum: -40
+  #      typical: 27
+  #      maximum: 130
+#
+  #power:
+  #  display: Power
+  #  spec:
+  #    power:
+  #      display: Power
+  #      description: Power consumption
+  #      unit: W
+  #      minimum:
+  #        value: any
+  #      typical:
+  #        value: any
+  #      maximum:
+  #        value: any
+  #  tool:
+  #    ngspice:
+  #      template: ota_tb_power.sch
+  #      format: ascii
+  #      suffix: .data
+  #      variables: [power]
+  #  conditions:
+  #    corner:
+  #      enumerate: [ss, tt, ff]
+  #    vcc:
+  #      minimum: 1.7
+  #      typical: 1.8
+  #      maximum: 1.9
+  #    temperature:
+  #      minimum: -40
+  #      typical: 27
+  #      maximum: 130
+  #
+  linearity:
+    display: Linearity
+    spec:
+      hd2:
+        display: hd2
+        description: hd2
+        unit: dB
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+      hd3:
+        display: hd3
+        description: hd3
+        unit: dB
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_linearity.sch
+        format: ascii
+        suffix: .data
+        variables: [hd2, hd3, thd]
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130
+  

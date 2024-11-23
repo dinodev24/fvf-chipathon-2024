@@ -1,0 +1,1 @@
+lvs "/foss/designs/fvf-chipathon-2024/netlist/layout/n_fvf_cell.spice" "/foss/designs/fvf-chipathon-2024/netlist/schematic/n_fvf_cell.spice" "/foss/pdks/sky130A/libs.tech/netgen/setup.tcl" n_fvf_cell_comp.out -json

@@ -1,4 +1,4 @@
-import fvf
+import n_fvf_cell
 from glayout.flow.pdk.sky130_mapped import sky130_mapped_pdk
 
-fvf.flipped_voltage_follower(sky130_mapped_pdk).write_gds("gds/fvf-chipathon-2024.gds")
+n_fvf_cell.n_fvf_cell(sky130_mapped_pdk).write_gds("gds/n_fvf_cell.gds")
