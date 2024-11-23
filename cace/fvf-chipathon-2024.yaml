@@ -86,89 +86,218 @@ default_conditions:
     unit: °C
     typical: 27
 
-parameters:  
-  #dc_params:
-  #  display: DC Params
-  #  spec:
-  #    a0:
-  #      display: DC gain
-  #      description: The DC gain of the OTA
-  #      unit: dB
-  #      minimum:
-  #        value: any
-  #      typical:
-  #        value: any
-  #      maximum:
-  #        value: any
-  #    ugf:
-  #      display: Unity Gain Frequency
-  #      description: The unity gain frequency of the OTA
-  #      unit: Hz
-  #      minimum:
-  #        value: any
-  #      typical:
-  #        value: any
-  #      maximum:
-  #        value: any
-  #    pm:
-  #      display: Phase Margin
-  #      description: The phase margin of the OTA
-  #      unit: °
-  #      minimum:
-  #        value: any
-  #      typical:
-  #        value: any
-  #      maximum:
-  #        value: any
-  #  tool:
-  #    ngspice:
-  #      template: ota_tb_dcparams.sch
-  #      format: ascii
-  #      suffix: .data
-  #      variables: [a0, ugf, pm]
-  #  conditions:
-  #    corner:
-  #      enumerate: [ss, tt, ff]
-  #    vcc:
-  #      minimum: 1.7
-  #      typical: 1.8
-  #      maximum: 1.9
-  #    temperature:
-  #      minimum: -40
-  #      typical: 27
-  #      maximum: 130
-#
-  #power:
-  #  display: Power
-  #  spec:
-  #    power:
-  #      display: Power
-  #      description: Power consumption
-  #      unit: W
-  #      minimum:
-  #        value: any
-  #      typical:
-  #        value: any
-  #      maximum:
-  #        value: any
-  #  tool:
-  #    ngspice:
-  #      template: ota_tb_power.sch
-  #      format: ascii
-  #      suffix: .data
-  #      variables: [power]
-  #  conditions:
-  #    corner:
-  #      enumerate: [ss, tt, ff]
-  #    vcc:
-  #      minimum: 1.7
-  #      typical: 1.8
-  #      maximum: 1.9
-  #    temperature:
-  #      minimum: -40
-  #      typical: 27
-  #      maximum: 130
-  #
+parameters:
+  dc_params:
+    display: DC Params
+    spec:
+      a0:
+        display: DC gain
+        description: The DC gain of the OTA
+        unit: V/V
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+      ugf:
+        display: Unity Gain Frequency
+        description: The unity gain frequency of the OTA
+        unit: Hz
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+      pm:
+        display: Phase Margin
+        description: The phase margin of the OTA
+        unit: °
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_dcparams.sch
+        format: ascii
+        suffix: .data
+        variables: [a0, ugf, pm]
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  cmrr:
+    display: CMRR
+    spec:
+      cmrr:
+        display: cmrr
+        description: cmrr
+        unit: dB
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_cmrr.sch
+        format: ascii
+        suffix: .data
+        variables: [frequency, cmrr]
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  psrr:
+    display: PSRR
+    spec:
+      psrr:
+        display: psrr
+        description: psrr
+        unit: dB
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_psrr.sch
+        format: ascii
+        suffix: .data
+        variables: [frequency, psrr]
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  linearity:
+    display: Linearity
+    vout:
+      vout:
+        display: vout
+        description: vout
+        unit: v
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_linearity.sch
+        format: ascii
+        suffix: .data
+        variables: [frequency, vout]
+    plot:
+      freq_vs_vout:
+        type: xyplot
+        xaxis: frequency
+        yaxis: vout
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  offset:
+    display: Offset
+    spec:
+      offset:
+        display: Offset
+        description: offset voltage
+        unit: v
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_offset.sch
+        format: ascii
+        suffix: .data
+        variables: [frequency, offset]
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
+  power:
+    display: Power
+    spec:
+      power:
+        display: Power
+        description: Power consumption
+        unit: uW
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_power.sch
+        format: ascii
+        suffix: .data
+        variables: [power]
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130
+
   linearity:
     display: Linearity
     spec:
@@ -209,4 +338,44 @@ parameters:
         minimum: -40
         typical: 27
         maximum: 130
-  
+
+  noise:
+    display: Noise
+    spec:
+      onoise:
+        display: onoise
+        description: onoise
+        unit: nV/sqrt(Hz)
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+      inoise:
+        display: inoise
+        description: inoise
+        unit: mv/sqrt(Hz)
+        minimum:
+          value: any
+        typical:
+          value: any
+        maximum:
+          value: any
+    tool:
+      ngspice:
+        template: ota_tb_noise.sch
+        format: ascii
+        suffix: .data
+        variables: [null, onoise, null, inoise]
+    conditions:
+      corner:
+        enumerate: [ss, tt, ff]
+      vcc:
+        minimum: 1.7
+        typical: 1.8
+        maximum: 1.9
+      temperature:
+        minimum: -40
+        typical: 27
+        maximum: 130

@@ -707,7 +707,6 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 60 750 0 0 {name=l19 lab=GND}
-C {devices/gnd.sym} -190 720 0 0 {name=l24 lab=GND}
 C {devices/lab_pin.sym} 450 410 3 0 {name=p3 sig_type=std_logic lab=Iin1}
 C {devices/lab_pin.sym} 70 410 1 1 {name=p10 sig_type=std_logic lab=Iin2}
 C {devices/vdd.sym} -460 460 0 0 {name=l4 lab=VCC}

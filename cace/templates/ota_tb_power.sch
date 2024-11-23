@@ -270,27 +270,27 @@ lab=#net9}
 N -430 550 -360 550 {
 lab=#net9}
 N -260 550 -260 580 {
-lab=GND}
-N -260 640 -260 690 {
 lab=#net11}
+N -260 640 -260 690 {
+lab=#net12}
 N -220 720 -190 720 {
-lab=GND}
+lab=#net11}
 N -190 550 -190 720 {
-lab=GND}
+lab=#net11}
 N -260 550 -190 550 {
-lab=GND}
+lab=#net11}
 N -50 550 -50 580 {
 lab=Iin1}
 N -50 640 -50 690 {
-lab=#net12}
+lab=#net13}
 N -390 610 -360 610 {
 lab=#net9}
 N -190 720 -90 720 {
-lab=GND}
+lab=#net11}
 N -430 520 -430 550 {
 lab=#net9}
 N -260 520 -260 550 {
-lab=GND}
+lab=#net11}
 N -360 610 -300 610 {
 lab=#net9}
 N -300 570 -300 610 {
@@ -302,15 +302,15 @@ lab=#net9}
 N 90 550 90 580 {
 lab=Iin2}
 N 90 640 90 690 {
-lab=#net13}
+lab=#net14}
 N 50 570 50 610 {
 lab=#net9}
 N -120 670 -120 720 {
-lab=GND}
+lab=#net11}
 N -120 670 50 670 {
-lab=GND}
+lab=#net11}
 N 50 670 50 720 {
-lab=GND}
+lab=#net11}
 N -90 570 50 570 {
 lab=#net9}
 C {sky130_fd_pr/nfet_01v8.sym} 240 120 0 1 {name=M1B
@@ -520,7 +520,7 @@ only_toplevel=false
 value="
 .control
     op
-    let power = i(vin) * v(vcc)
+    let power = i(vin) * v(vcc) * -1
     echo $&power > CACE\{simpath\}/CACE\{filename\}_CACE\{N\}.data
 .endc
 "}
@@ -730,7 +730,6 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 90 750 0 0 {name=l19 lab=GND}
-C {devices/gnd.sym} -160 720 0 0 {name=l24 lab=GND}
 C {devices/lab_pin.sym} 480 410 3 0 {name=p3 sig_type=std_logic lab=Iin1}
 C {devices/lab_pin.sym} 100 410 1 1 {name=p10 sig_type=std_logic lab=Iin2}
 C {devices/vdd.sym} -430 460 0 0 {name=l4 lab=VCC}

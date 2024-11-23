@@ -313,8 +313,6 @@ N 30 670 30 720 {
 lab=GND}
 N -110 570 30 570 {
 lab=#net9}
-N -180 770 -180 780 {
-lab=#net14}
 C {sky130_fd_pr/nfet_01v8.sym} 240 120 0 1 {name=M1B
 W=2.75
 L=1.5
@@ -741,7 +739,6 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 70 750 0 0 {name=l19 lab=GND}
-C {devices/gnd.sym} -180 720 0 0 {name=l24 lab=GND}
 C {devices/lab_pin.sym} 460 410 3 0 {name=p3 sig_type=std_logic lab=Iin1}
 C {devices/lab_pin.sym} 80 410 1 1 {name=p10 sig_type=std_logic lab=Iin2}
 C {devices/vdd.sym} -450 460 0 0 {name=l4 lab=VCC}
