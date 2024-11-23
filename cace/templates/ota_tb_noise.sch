@@ -5,204 +5,40 @@ K {}
 V {}
 S {}
 E {}
-N 220 0 220 10 {
-lab=CM2}
-N -220 70 -220 90 {
-lab=#net1}
-N -320 0 -220 0 {
-lab=CM1}
-N -320 0 -320 120 {
-lab=CM1}
-N -320 120 -260 120 {
-lab=CM1}
-N 220 70 220 90 {
-lab=#net2}
-N -310 40 -260 40 {
-lab=VINN}
-N -310 -110 -260 -110 {
-lab=VINN}
-N 260 120 320 120 {
-lab=CM2}
-N 220 0 320 0 {
-lab=CM2}
-N 320 0 320 120 {
-lab=CM2}
-N 260 40 310 40 {
-lab=VINP}
-N 260 -110 310 -110 {
-lab=VINP}
-N -220 80 -40 80 {
-lab=#net1}
-N 40 -80 220 -80 {
-lab=#net1}
-N -220 -80 -40 -80 {
-lab=#net2}
-N 40 80 220 80 {
-lab=#net2}
-N 140 -200 220 -200 {
-lab=#net3}
-N -220 -200 -140 -200 {
-lab=#net4}
-N -80 -200 80 -200 {
-lab=#net5}
-N -180 -280 180 -280 {
-lab=#net5}
-N -380 -320 380 -320 {
-lab=VCC}
-N 320 -280 340 -280 {
-lab=#net3}
-N -340 -280 -320 -280 {
-lab=#net4}
-N -340 200 340 200 {
-lab=#net6}
-N -380 -250 -380 170 {
-lab=#net6}
-N -380 160 -320 160 {
-lab=#net6}
-N -320 160 -320 200 {
-lab=#net6}
-N 380 -250 380 170 {
-lab=VOUT}
-N -380 -320 -380 -310 {
-lab=VCC}
-N -220 -320 -220 -310 {
-lab=VCC}
-N 220 -320 220 -310 {
-lab=VCC}
-N 380 -320 380 -310 {
-lab=VCC}
-N 380 -0 440 0 {
-lab=VOUT}
-N -220 -110 -210 -110 {
-lab=#net2}
-N -210 -110 -210 -80 {
-lab=#net2}
-N 210 -110 220 -110 {
-lab=#net1}
-N 210 -110 210 -80 {
-lab=#net1}
-N -390 200 -380 200 {
-lab=GND}
-N -390 200 -390 230 {
-lab=GND}
-N -390 230 -380 230 {
-lab=GND}
-N -220 120 -210 120 {
-lab=GND}
-N -210 120 -210 150 {
-lab=GND}
-N -220 150 -210 150 {
-lab=GND}
-N -220 40 -210 40 {
-lab=#net1}
-N -210 40 -210 70 {
-lab=#net1}
-N -220 70 -210 70 {
-lab=#net1}
-N 210 120 220 120 {
-lab=GND}
-N 210 120 210 150 {
-lab=GND}
-N 210 150 220 150 {
-lab=GND}
-N 210 40 220 40 {
-lab=#net2}
-N 210 40 210 70 {
-lab=#net2}
-N 210 70 220 70 {
-lab=#net2}
-N 380 200 390 200 {
-lab=GND}
-N 390 200 390 230 {
-lab=GND}
-N 380 230 390 230 {
-lab=GND}
-N 220 -280 230 -280 {
-lab=VCC}
-N 230 -310 230 -280 {
-lab=VCC}
-N 220 -310 230 -310 {
-lab=VCC}
-N 380 -280 390 -280 {
-lab=VCC}
-N 390 -310 390 -280 {
-lab=VCC}
-N 380 -310 390 -310 {
-lab=VCC}
-N -230 -280 -220 -280 {
-lab=VCC}
-N -230 -310 -230 -280 {
-lab=VCC}
-N -230 -310 -220 -310 {
-lab=VCC}
-N -390 -280 -380 -280 {
-lab=VCC}
-N -390 -310 -390 -280 {
-lab=VCC}
-N -390 -310 -380 -310 {
-lab=VCC}
-N -220 0 -220 10 {
-lab=CM1}
-N -320 -280 -320 -200 {
-lab=#net4}
-N -320 -200 -220 -200 {
-lab=#net4}
-N 320 -280 320 -200 {
-lab=#net3}
-N 220 -200 320 -200 {
-lab=#net3}
-N -40 80 40 -80 {
-lab=#net1}
-N 220 -250 220 -200 {
-lab=#net3}
-N 220 -200 220 -140 {
-lab=#net3}
-N 310 -110 310 40 {
-lab=VINP}
-N -40 -80 40 80 {
-lab=#net2}
-N -310 -110 -310 40 {
-lab=VINN}
-N -220 -250 -220 -200 {
-lab=#net4}
-N -220 -200 -220 -140 {
-lab=#net4}
-N -0 -280 -0 -200 {
-lab=#net5}
 N -540 -60 -500 -60 {
-lab=#net7}
+lab=#net2}
 N -720 -110 -720 50 {
-lab=#net7}
+lab=#net2}
 N -720 -110 -540 -110 {
-lab=#net7}
+lab=#net2}
 N -720 110 -720 130 {
 lab=GND}
 N -540 110 -540 130 {
 lab=GND}
 N -540 30 -460 30 {
-lab=#net8}
+lab=#net3}
 N -540 30 -540 50 {
-lab=#net8}
+lab=#net3}
 N -540 -20 -500 -20 {
 lab=GND}
 N -540 -20 -540 0 {
 lab=GND}
 N -620 -10 -620 30 {
-lab=#net8}
+lab=#net3}
 N -460 -10 -460 30 {
-lab=#net8}
+lab=#net3}
 N -540 -110 -540 -60 {
-lab=#net7}
+lab=#net2}
 N -460 -150 -460 -70 {
 lab=VINN}
 N -620 -150 -620 -70 {
 lab=VINP}
 N -620 30 -540 30 {
-lab=#net8}
+lab=#net3}
 N -580 -20 -540 -20 {
 lab=GND}
 N -580 -60 -540 -60 {
-lab=#net7}
+lab=#net2}
 N 480 590 490 590 {
 lab=VCC}
 N 490 560 490 590 {
@@ -260,180 +96,179 @@ lab=VCC}
 N 670 560 670 590 {
 lab=VCC}
 N -380 420 -380 450 {
-lab=#net9}
+lab=#net4}
 N -380 510 -380 560 {
-lab=#net10}
+lab=#net5}
 N -340 590 -310 590 {
-lab=#net9}
+lab=#net4}
 N -310 420 -310 590 {
-lab=#net9}
+lab=#net4}
 N -380 420 -310 420 {
-lab=#net9}
+lab=#net4}
 N -210 420 -210 450 {
-lab=#net11}
+lab=#net6}
 N -210 510 -210 560 {
-lab=#net12}
+lab=#net7}
 N -170 590 -140 590 {
-lab=#net11}
+lab=#net6}
 N -140 420 -140 590 {
-lab=#net11}
+lab=#net6}
 N -210 420 -140 420 {
-lab=#net11}
+lab=#net6}
 N 0 420 0 450 {
 lab=Iin1}
 N 0 510 0 560 {
-lab=#net13}
+lab=#net8}
 N -340 480 -310 480 {
-lab=#net9}
+lab=#net4}
 N -140 590 -40 590 {
-lab=#net11}
+lab=#net6}
 N -380 390 -380 420 {
-lab=#net9}
+lab=#net4}
 N -210 390 -210 420 {
-lab=#net11}
+lab=#net6}
 N -310 480 -250 480 {
-lab=#net9}
+lab=#net4}
 N -250 440 -250 480 {
-lab=#net9}
+lab=#net4}
 N -250 440 -40 440 {
-lab=#net9}
+lab=#net4}
 N -40 440 -40 480 {
-lab=#net9}
+lab=#net4}
 N 140 420 140 450 {
 lab=Iin2}
 N 140 510 140 560 {
-lab=#net14}
+lab=#net9}
 N 100 440 100 480 {
-lab=#net9}
+lab=#net4}
 N -70 540 -70 590 {
-lab=#net11}
+lab=#net6}
 N -70 540 100 540 {
-lab=#net11}
+lab=#net6}
 N 100 540 100 590 {
-lab=#net11}
+lab=#net6}
 N -40 440 100 440 {
-lab=#net9}
-C {sky130_fd_pr/nfet_01v8.sym} 240 120 0 1 {name=M1B
-W=2.75
-L=1.5
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet_01v8.sym} 240 40 0 1 {name=M2B
-W=4.0
-L=2.0
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {devices/gnd.sym} 220 150 0 0 {name=l1 lab=GND}
-C {devices/lab_pin.sym} -310 -110 0 0 {name=p1 sig_type=std_logic lab=VINN}
-C {sky130_fd_pr/nfet_01v8.sym} -240 120 0 0 {name=M1A
-W=2.75
-L=1.5
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet_01v8.sym} -240 40 0 0 {name=M2A
-W=4.0
-L=2.0
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {devices/gnd.sym} -220 150 0 1 {name=l2 lab=GND}
-C {devices/lab_pin.sym} 310 -110 0 1 {name=p6 sig_type=std_logic lab=VINP
-}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 200 -280 0 0 {name=M3B
-W=4.53
-L=1.0
-nf=1
-mult=2
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_lvt
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} -200 -280 0 1 {name=M3A
-W=4.53
-L=1.0
-nf=1
-mult=2
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_lvt
-spiceprefix=X
-}
-C {devices/vdd.sym} 0 -320 0 0 {name=l6 lab=VCC}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} 360 -280 0 0 {name=M4B
-W=4.53
-L=1.0
-nf=1
-mult=2
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_lvt
-spiceprefix=X
-}
-C {sky130_fd_pr/pfet_01v8_lvt.sym} -360 -280 0 1 {name=M4A
-W=4.53
-L=1.0
-nf=1
-mult=2
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=pfet_01v8_lvt
-spiceprefix=X
-}
-C {devices/gnd.sym} -380 230 0 1 {name=l8 lab=GND}
-C {devices/gnd.sym} 380 230 0 1 {name=l9 lab=GND}
-C {devices/lab_pin.sym} 440 0 2 0 {name=p2 sig_type=std_logic lab=VOUT}
+lab=#net4}
+N 220 0 220 10 {
+lab=CM2}
+N -320 0 -220 0 {
+lab=CM1}
+N -320 0 -320 120 {
+lab=CM1}
+N -320 120 -260 120 {
+lab=CM1}
+N 220 70 220 90 {
+lab=#net1}
+N -310 40 -260 40 {
+lab=VINN}
+N -310 -110 -260 -110 {
+lab=VINN}
+N 260 120 320 120 {
+lab=CM2}
+N 220 0 320 0 {
+lab=CM2}
+N 320 0 320 120 {
+lab=CM2}
+N 260 40 310 40 {
+lab=VINP}
+N 260 -110 310 -110 {
+lab=VINP}
+N -220 80 -40 80 {
+lab=#net2}
+N 40 -80 220 -80 {
+lab=#net2}
+N -220 -80 -40 -80 {
+lab=#net1}
+N 40 80 220 80 {
+lab=#net1}
+N 140 -200 220 -200 {
+lab=#net3}
+N -220 -200 -140 -200 {
+lab=#net4}
+N -80 -200 80 -200 {
+lab=#net5}
+N -180 -280 180 -280 {
+lab=#net5}
+N -380 -320 380 -320 {
+lab=VCC}
+N 320 -280 340 -280 {
+lab=#net3}
+N -340 -280 -320 -280 {
+lab=#net4}
+N -340 200 340 200 {
+lab=#net6}
+N -380 -250 -380 170 {
+lab=#net6}
+N -380 160 -320 160 {
+lab=#net6}
+N -320 160 -320 200 {
+lab=#net6}
+N 380 -250 380 170 {
+lab=VOUT}
+N -380 -320 -380 -310 {
+lab=VCC}
+N -220 -320 -220 -310 {
+lab=VCC}
+N 220 -320 220 -310 {
+lab=VCC}
+N 380 -320 380 -310 {
+lab=VCC}
+N 380 0 440 0 {
+lab=VOUT}
+N 220 -280 230 -280 {
+lab=VCC}
+N 230 -310 230 -280 {
+lab=VCC}
+N 220 -310 230 -310 {
+lab=VCC}
+N 380 -280 390 -280 {
+lab=VCC}
+N 390 -310 390 -280 {
+lab=VCC}
+N 380 -310 390 -310 {
+lab=VCC}
+N -230 -280 -220 -280 {
+lab=VCC}
+N -230 -310 -230 -280 {
+lab=VCC}
+N -230 -310 -220 -310 {
+lab=VCC}
+N -390 -280 -380 -280 {
+lab=VCC}
+N -390 -310 -390 -280 {
+lab=VCC}
+N -390 -310 -380 -310 {
+lab=VCC}
+N -220 0 -220 10 {
+lab=CM1}
+N -320 -280 -320 -200 {
+lab=#net4}
+N -320 -200 -220 -200 {
+lab=#net4}
+N 320 -280 320 -200 {
+lab=#net3}
+N 220 -200 320 -200 {
+lab=#net3}
+N -40 80 40 -80 {
+lab=#net2}
+N 220 -250 220 -200 {
+lab=#net3}
+N 220 -200 220 -140 {
+lab=#net3}
+N 310 -110 310 40 {
+lab=VINP}
+N -40 -80 40 80 {
+lab=#net1}
+N -310 -110 -310 40 {
+lab=VINN}
+N -220 -250 -220 -200 {
+lab=#net4}
+N -220 -200 -220 -140 {
+lab=#net4}
+N 0 -280 0 -200 {
+lab=#net5}
+N -220 70 -220 90 {
+lab=#net2}
 C {devices/lab_pin.sym} -620 -150 2 1 {name=p4 sig_type=std_logic lab=VINP
 }
 C {devices/lab_pin.sym} -460 -150 0 0 {name=p5 sig_type=std_logic lab=VINN}
@@ -443,62 +278,6 @@ value=CACE\{cl\}
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 410 60 0 0 {name=l12 lab=GND}
-C {sky130_fd_pr/nfet_01v8.sym} -360 200 0 1 {name=M5A
-W=0.45
-L=3.45
-nf=1
-mult=2
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet_01v8.sym} 360 200 0 0 {name=M5B
-W=0.45
-L=3.45
-nf=1
-mult=2
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet_01v8.sym} -240 -110 0 0 {name=MinA
-W=4.0
-L=2.0
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
-C {sky130_fd_pr/nfet_01v8.sym} 240 -110 0 1 {name=MinB
-W=4.0
-L=2.0
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.29'" 
-pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
-as="'int((nf+2)/2) * W/nf * 0.29'" 
-ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
-nrd="'0.29 / W'" nrs="'0.29 / W'"
-sa=0 sb=0 sd=0
-model=nfet_01v8
-spiceprefix=X
-}
 C {devices/code_shown.sym} 540 -270 0 0 {name=SETUP
 simulator=ngspice
 only_toplevel=false
@@ -528,14 +307,6 @@ value="
 
 .endc
 "}
-C {sky130_tests/passgate_nlvt.sym} -100 -200 2 0 {name=x2 W_N=0.5 L_N=4 W_P=3 L_P=4 VCCBPIN=VCC VSSBPIN=VSS m=1}
-C {sky130_tests/passgate_nlvt.sym} 120 -200 2 1 {name=x1 W_N=0.5 L_N=4 W_P=3 L_P=4 VCCBPIN=VCC VSSBPIN=VSS m=1}
-C {devices/vdd.sym} -100 -230 0 0 {name=l20 lab=VCC}
-C {devices/vdd.sym} 120 -230 0 0 {name=l21 lab=VCC}
-C {devices/gnd.sym} -100 -170 0 1 {name=l22 lab=GND}
-C {devices/gnd.sym} 120 -170 0 0 {name=l23 lab=GND}
-C {devices/lab_pin.sym} -220 0 1 0 {name=p8 sig_type=std_logic lab=CM1}
-C {devices/lab_pin.sym} 220 0 1 0 {name=p7 sig_type=std_logic lab=CM2}
 C {devices/vcvs.sym} -620 -40 0 1 {name=E1 value=0.5}
 C {devices/vcvs.sym} -460 -40 0 0 {name=E2 value=-0.5}
 C {devices/vsource.sym} -720 80 0 1 {name=Vdm value="1 ac 1" savecurrent=false}
@@ -738,3 +509,196 @@ C {devices/lab_pin.sym} 480 620 3 0 {name=p3 sig_type=std_logic lab=Iin1}
 C {devices/lab_pin.sym} 840 620 1 1 {name=p10 sig_type=std_logic lab=Iin2}
 C {devices/vdd.sym} -380 330 0 0 {name=l4 lab=VCC}
 C {devices/vdd.sym} -210 330 0 0 {name=l5 lab=VCC}
+C {devices/gnd.sym} 220 150 0 0 {name=l1 lab=GND}
+C {devices/lab_pin.sym} -310 -110 0 0 {name=p1 sig_type=std_logic lab=VINN}
+C {devices/gnd.sym} -220 150 0 1 {name=l2 lab=GND}
+C {devices/lab_pin.sym} 310 -110 0 1 {name=p6 sig_type=std_logic lab=VINP
+}
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 200 -280 0 0 {name=M3B
+W=4.53
+L=1.0
+nf=1
+mult=2
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8_lvt
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8_lvt.sym} -200 -280 0 1 {name=M3A
+W=4.53
+L=1.0
+nf=1
+mult=2
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8_lvt
+spiceprefix=X
+}
+C {devices/vdd.sym} 0 -320 0 0 {name=l6 lab=VCC}
+C {sky130_fd_pr/pfet_01v8_lvt.sym} 360 -280 0 0 {name=M4B
+W=4.53
+L=1.0
+nf=1
+mult=2
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8_lvt
+spiceprefix=X
+}
+C {sky130_fd_pr/pfet_01v8_lvt.sym} -360 -280 0 1 {name=M4A
+W=4.53
+L=1.0
+nf=1
+mult=2
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=pfet_01v8_lvt
+spiceprefix=X
+}
+C {devices/gnd.sym} -380 230 0 1 {name=l8 lab=GND}
+C {devices/gnd.sym} 380 230 0 1 {name=l9 lab=GND}
+C {devices/lab_pin.sym} 440 0 2 0 {name=p2 sig_type=std_logic lab=VOUT}
+C {sky130_tests/passgate_nlvt.sym} -100 -200 2 0 {name=x2 W_N=0.5 L_N=4 W_P=3 L_P=4 VCCBPIN=VCC VSSBPIN=VSS m=1}
+C {sky130_tests/passgate_nlvt.sym} 120 -200 2 1 {name=x1 W_N=0.5 L_N=4 W_P=3 L_P=4 VCCBPIN=VCC VSSBPIN=VSS m=1}
+C {devices/vdd.sym} -100 -230 0 0 {name=l20 lab=VCC}
+C {devices/vdd.sym} 120 -230 0 0 {name=l21 lab=VCC}
+C {devices/gnd.sym} -100 -170 0 1 {name=l22 lab=GND}
+C {devices/gnd.sym} 120 -170 0 0 {name=l23 lab=GND}
+C {devices/lab_pin.sym} -220 0 1 0 {name=p8 sig_type=std_logic lab=CM1}
+C {devices/lab_pin.sym} 220 0 1 0 {name=p7 sig_type=std_logic lab=CM2}
+C {sky130_fd_pr/nfet3_01v8.sym} -240 40 0 0 {name=M2A
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet3_01v8.sym} -240 120 0 0 {name=M1A
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet3_01v8.sym} 240 40 0 1 {name=M2B
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet3_01v8.sym} 240 120 0 1 {name=M1B
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet3_01v8.sym} -240 -110 0 0 {name=MinA
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet3_01v8.sym} 240 -110 0 1 {name=MinB
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet3_01v8.sym} -360 200 0 1 {name=M5A
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet3_01v8.sym} 360 200 0 0 {name=M5B
+L=0.15
+W=1
+nf=1
+mult=1
+body=GND
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
