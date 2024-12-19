@@ -24,7 +24,8 @@ def n_block(
         input_pair_params: tuple[float,float]=(4,2),
         fvf_shunt_params: tuple[float,float]=(2.75,1),
         current_mirror_params: tuple[float,float]=(2.25,1),
-        global_current_bias_params: tuple[tuple[float,float],float]=((8.3,1.42),2)
+        ratio: int=1,
+        global_current_bias_params: tuple[float,float,float]=(8.3,1.42,2)
         ) -> Component:
     """
     creates a super class AB OTA using flipped voltage follower at biasing stage and local common mode feedback to give dynamic current and gain boost much less dependent on biasing current
@@ -102,7 +103,7 @@ def n_block(
     top_level.add_ports(fvf_1_ref.get_ports_list(), prefix="fvf_1_")
     top_level.add_ports(fvf_2_ref.get_ports_list(), prefix="fvf_2_")
 
-    cmirror = current_mirror(pdk, numcols=2, with_substrate_tap=False, width=current_mirror_params[0], length=current_mirror_params[1], fingers=1, sd_rmult=3)
+    cmirror = current_mirror(pdk, numcols=2, with_substrate_tap=False, width=current_mirror_params[0], length=current_mirror_params[1], fingers=ratio, sd_rmult=3)
     cmirr_ref = prec_ref_center(cmirror)
     cmirr_ref.movey(fvf_1_ref.ymin - (evaluate_bbox(cmirror)[1] + evaluate_bbox(fvf)[1])/2)
     top_level.add(cmirr_ref)
@@ -114,7 +115,7 @@ def n_block(
 
     top_level.add_ports(cmirr_ref.get_ports_list(), prefix="op_cmirr_")
  
-    global_c_bias = low_voltage_cmirror(pdk, width=(global_current_bias_params[0][0]/2,global_current_bias_params[0][1]), length=global_current_bias_params[1], fingers=(2,1))
+    global_c_bias = low_voltage_cmirror(pdk, width=(global_current_bias_params[0]/2,global_current_bias_params[1]), length=global_current_bias_params[2], fingers=(2,1))
     global_c_bias_ref = prec_ref_center(global_c_bias)
     global_c_bias_ref.movey(cmirr_ref.ymin - evaluate_bbox(global_c_bias)[1]/2 - 8*pdk.util_max_metal_seperation())
     top_level.add(global_c_bias_ref)

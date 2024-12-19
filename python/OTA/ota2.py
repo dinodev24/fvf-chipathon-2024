@@ -1,6 +1,7 @@
 from glayout.flow.pdk.mappedpdk import MappedPDK
 from glayout.flow.pdk.sky130_mapped import sky130_mapped_pdk
 from gdsfactory import Component
+from gdsfactory.cell import cell
 
 from glayout.flow.pdk.util.comp_utils import evaluate_bbox, prec_ref_center, prec_center, align_comp_to_port
 from glayout.flow.pdk.util.port_utils import rename_ports_by_orientation
@@ -20,6 +21,7 @@ from p_block import p_block
 from n_block import n_block
 #from lvt_cmirror import low_voltage_cmirror
 
+@cell
 def sky130_add_ota_labels(ota_in: Component) -> Component:
 	
     ota_in.unlock()
@@ -40,10 +42,10 @@ def sky130_add_ota_labels(ota_in: Component) -> Component:
     
     #currentbias
     ibias1label = rectangle(layer=met3_pin,size=(0.5,0.5),centered=True).copy()
-    ibias1label.add_label(text="NB_10U",layer=met3_label)
+    ibias1label.add_label(text="NBC_10U",layer=met3_label)
     move_info.append((ibias1label,ota_in.ports["IBIAS1_top_met_N"],None))
     ibias2label = rectangle(layer=met3_pin,size=(0.5,0.5),centered=True).copy()
-    ibias2label.add_label(text="NBC_10U",layer=met3_label)
+    ibias2label.add_label(text="NB_10U",layer=met3_label)
     move_info.append((ibias2label,ota_in.ports["IBIAS2_top_met_N"],None))
     
     #vcc
@@ -71,6 +73,7 @@ def sky130_add_ota_labels(ota_in: Component) -> Component:
         ota_in.add(compref)
     return ota_in.flatten() 
 
+@cell
 def super_class_AB_OTA(
         pdk: MappedPDK,
         input_pair_params: tuple[float,float]=(4,2),
@@ -79,8 +82,8 @@ def super_class_AB_OTA(
         diff_pair_load_params: tuple[float,float]=(9,1),
         ratio: int=1,
         current_mirror_params: tuple[float,float]=(2.25,1),
-        resistor_params: tuple[tuple[float,float],tuple[float,float]]=((0.5,3),(4,4)),
-        global_current_bias_params: tuple[tuple[float,float],float]=((8.3,1.42),2)
+        resistor_params: tuple[float,float,float,float]=(0.5,3,4,4),
+        global_current_bias_params: tuple[float,float,float]=(8.3,1.42,2)
         ) -> Component:
     """
     creates a super class AB OTA using flipped voltage follower at biasing stage and local common mode feedback to give dynamic current and gain boost much less dependent on biasing current
@@ -99,7 +102,7 @@ def super_class_AB_OTA(
     top_level = Component("Super_class_AB_OTA")
     
     #input differential pair
-    nb = n_block(pdk, input_pair_params=input_pair_params, fvf_shunt_params=fvf_shunt_params, current_mirror_params=current_mirror_params, global_current_bias_params=global_current_bias_params)
+    nb = n_block(pdk, input_pair_params=input_pair_params, fvf_shunt_params=fvf_shunt_params, ratio=ratio, current_mirror_params=current_mirror_params, global_current_bias_params=global_current_bias_params)
     n_block_ref = prec_ref_center(nb)
     top_level.add(n_block_ref)
     top_level.add_ports(n_block_ref.get_ports_list())
@@ -139,7 +142,7 @@ def super_class_AB_OTA(
     top_level.add_ports(local_c_bias_2_ref.get_ports_list(), prefix="cmirr_2_")
 
     #LCMFB resistors
-    resistor = transmission_gate(pdk, width=resistor_params[0], length=resistor_params[1], sd_rmult=3)
+    resistor = transmission_gate(pdk, width=(resistor_params[0],resistor_params[1]), length=(resistor_params[2],resistor_params[3]), sd_rmult=3)
     res_1_ref = prec_ref_center(resistor)
     res_2_ref = prec_ref_center(resistor)
     res_1_ref.movey(n_block_ref.ymax + evaluate_bbox(resistor)[1]/2 + 1).movex(-evaluate_bbox(resistor)[0]/2 - 5)
@@ -169,13 +172,14 @@ def super_class_AB_OTA(
     top_level << c_route(pdk, res_1_ref.ports["P_multiplier_0_drain_E"], p_block_ref.ports["bottom_A_0_gate_E"], e1glayer='met2', width2=0.29*2)
     top_level << c_route(pdk, res_2_ref.ports["P_multiplier_0_drain_E"], p_block_ref.ports["bottom_B_1_gate_W"], e1glayer='met2', width2=0.29*2)
 
-    top_level << c_route(pdk, p_block_ref.ports["top_A_0_drain_W"], n_block_ref.ports["op_cmirr_fet_A_drain_W"], extension=-local_c_bias_1_ref.xmax-8-2*diff_pair_load_params[1] , cwidth=3, viaoffset=(True,True))
-    top_level << c_route(pdk, p_block_ref.ports["top_B_1_drain_E"], n_block_ref.ports["op_cmirr_fet_B_drain_E"], extension=local_c_bias_2_ref.xmin-8-2*diff_pair_load_params[1] , cwidth=3, viaoffset=(True,True))
+    top_level << c_route(pdk, p_block_ref.ports["top_A_0_drain_W"], n_block_ref.ports["op_cmirr_fet_A_drain_W"], extension=-local_c_bias_1_ref.xmax-8-2*ratio*diff_pair_load_params[1] , cwidth=3, viaoffset=(True,True))
+    top_level << c_route(pdk, p_block_ref.ports["top_B_1_drain_E"], n_block_ref.ports["op_cmirr_fet_B_drain_E"], extension=local_c_bias_2_ref.xmin-8-2*ratio*diff_pair_load_params[1] , cwidth=3, viaoffset=(True,True))
 
     top_level << c_route(pdk, p_block_ref.ports["bottom_A_0_drain_W"], res_1_ref.ports["P_multiplier_0_source_W"], cwidth=0.9, width2=0.29*3)
     top_level << c_route(pdk, p_block_ref.ports["bottom_B_1_drain_E"], res_2_ref.ports["P_multiplier_0_source_W"], cwidth=0.9, width2=0.29*3)
         
     top_level.add_ports(p_block_ref.get_ports_list(), prefix="pblock_")
+    """
     #adding lvt layer
     lvt_layer=(125,44)
     dimensions = (evaluate_bbox(top_level)[0], (p_block_ref.ymax - res_1_ref.ymin))
@@ -184,7 +188,7 @@ def super_class_AB_OTA(
     lvt_rectangle_ref = prec_ref_center(lvt_rectangle)
     lvt_rectangle_ref.movey(n_block_ref.ymax + dimensions[1]/2)
     top_level.add(lvt_rectangle_ref)
-    """
+    
     #adding a pwell    
     pwell_rectangle = rectangle(layer=(pdk.get_glayer("pwell")), size=(85,30.25))
     pwell_rectangle_ref = prec_ref_center(pwell_rectangle,(0,-8.825))
@@ -277,11 +281,11 @@ def super_class_AB_OTA(
     component = component_snap_to_grid(rename_ports_by_orientation(top_level))
     
     return component
-
+"""
 OTA = sky130_add_ota_labels(super_class_AB_OTA(sky130_mapped_pdk))
 OTA.show()
 OTA.name = "ota"
 OTA.write_gds("./ota.gds")
 magic_drc_result = sky130_mapped_pdk.drc_magic(OTA, OTA.name)
-#netgen_lvs_result = sky130_mapped_pdk.lvs_netgen(OTA, design_name="ota", netlist="ota.spice")
-
+netgen_lvs_result = sky130_mapped_pdk.lvs_netgen(OTA, design_name="ota", netlist="ota.spice")
+"""
