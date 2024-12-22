@@ -36,7 +36,7 @@ def super_class_AB_OTA_netlist(local_c_bias_1_ref: ComponentReference, local_c_b
         netlist.connect_subnets(
             pblock_ref,
             nblock_ref,
-            [('MA_1_D', 'Min1_D'),('MA_2_D','Min2_D'),('MB_1_D','OUT_N_1'),('MB_2_D','OUT_N_2')]
+            [('MA_1_D', 'Min1_D'),('MA_2_D','Min2_D'),('MB_1_D','OUT_N_1')]
         )
         netlist.connect_subnets(
             pblock_ref,
