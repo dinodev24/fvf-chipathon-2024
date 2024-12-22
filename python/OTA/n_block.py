@@ -2,13 +2,14 @@ from glayout.flow.pdk.mappedpdk import MappedPDK
 from glayout.flow.pdk.sky130_mapped import sky130_mapped_pdk
 from gdsfactory import Component
 from gdsfactory.cell import cell
+from gdsfactory.component_reference import ComponentReference
 
 from glayout.flow.pdk.util.comp_utils import evaluate_bbox, prec_ref_center, prec_center, align_comp_to_port
 from glayout.flow.pdk.util.port_utils import rename_ports_by_orientation
 from glayout.flow.pdk.util.snap_to_grid import component_snap_to_grid
 from gdsfactory.components import text_freetype, rectangle
 
-
+from glayout.flow.spice.netlist import Netlist
 from glayout.flow.routing.straight_route import straight_route
 from glayout.flow.routing.c_route import c_route
 from glayout.flow.routing.L_route import L_route
@@ -16,7 +17,20 @@ from fvf import fvf_netlist, flipped_voltage_follower
 from cm import current_mirror, current_mirror_netlist
 from glayout.flow.primitives.via_gen import via_stack, via_array
 from glayout.flow.primitives.fet import nmos, pmos, multiplier
-from cm2 import low_voltage_cmirror
+from cm2 import low_voltage_cmirror, low_voltage_cmirr_netlist
+
+def n_block_netlist(fet_inA_ref: ComponentReference, fet_inB_ref: ComponentReference, fvf_1_ref: ComponentReference, fvf_2_ref: ComponentReference, cmirror: Component, global_c_bias: Component) -> Netlist:
+
+        netlist = Netlist(circuit_name='N_block', nodes=['IBIAS1', 'IBIAS2', 'GND', 'ILCM1', 'ILCM2', 'IFVF1','IFVF2', 'INP', 'INM', 'Min1_D', 'Min2_D', 'OUT_N_1', 'OUT_N_2'])
+        netlist.connect_netlist(global_c_bias.info['netlist'], [('IBIAS1','IBIAS1'),('GND','GND'),('IBIAS2','IBIAS2'),('IOUT1','ILCM1'),('IOUT2','ILCM2')])
+        netlist.connect_netlist(cmirror.info['netlist'], [('VREF','OUT_N_1'),('VCOPY','OUT_N_2'),('VSS', 'GND'),('VB','GND')])
+        netlist.connect_netlist(fet_inA_ref.info['netlist'], [('D', 'Min1_D'),('G','INM'),('B','GND')])
+        netlist.connect_netlist(fet_inB_ref.info['netlist'], [('D', 'Min2_D'),('G','INP'),('B','GND')])
+        netlist.connect_netlist(fvf_1_ref.info['netlist'], [('VIN','INM'),('VOUT', 'INP'),('VBULK','GND'),('Ib','IFVF1')])
+        netlist.connect_netlist(fvf_2_ref.info['netlist'], [('VIN','INP'),('VOUT', 'INM'),('VBULK','GND'),('Ib','IFVF2')])
+
+        return netlist
+
 
 @cell
 def n_block(
@@ -120,13 +134,22 @@ def n_block(
     global_c_bias_ref.movey(cmirr_ref.ymin - evaluate_bbox(global_c_bias)[1]/2 - 8*pdk.util_max_metal_seperation())
     top_level.add(global_c_bias_ref)
     top_level.add_ports(global_c_bias_ref.get_ports_list(), prefix="cbias_")
+
+
+    fet_1 = nmos(pdk, width=input_pair_params[0], length=input_pair_params[1], fingers=1, with_dnwell=False, with_tie=True, with_substrate_tap=False, sd_rmult=3)
+    fet_2 = nmos(pdk, width=input_pair_params[0], length=input_pair_params[1], fingers=1, with_dnwell=False, with_tie=True, with_substrate_tap=False, sd_rmult=3)
+    fvf_1 = flipped_voltage_follower(pdk, width=(input_pair_params[0],fvf_shunt_params[0]), length=(input_pair_params[1],fvf_shunt_params[1]), fingers=(1,1), sd_rmult=3, with_dnwell=False)
+    fvf_2 = flipped_voltage_follower(pdk, width=(input_pair_params[0],fvf_shunt_params[0]), length=(input_pair_params[1],fvf_shunt_params[1]), fingers=(1,1), sd_rmult=3, with_dnwell=False)
+
     
     component = component_snap_to_grid(rename_ports_by_orientation(top_level))
+    component.info['netlist'] = n_block_netlist(fet_inA_ref, fet_inB_ref, fvf_1_ref, fvf_2_ref, cmirror, global_c_bias)
+    #print(component.info['netlist'].generate_netlist(only_subcircuits=True))
 
     return component
-"""
-nb = n_block(sky130_mapped_pdk)
-nb.show()
-nb.name = "n_block"
-magic_drc_result = sky130_mapped_pdk.drc_magic(nb, nb.name)
-"""
+
+#nb = n_block(sky130_mapped_pdk)
+#nb.show()
+#nb.name = "n_block"
+#magic_drc_result = sky130_mapped_pdk.drc_magic(nb, nb.name)
+

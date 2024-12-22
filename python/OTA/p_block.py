@@ -2,6 +2,7 @@ from glayout.flow.pdk.mappedpdk import MappedPDK
 from glayout.flow.pdk.sky130_mapped import sky130_mapped_pdk
 from gdsfactory.cell import cell
 from gdsfactory.component import Component
+from gdsfactory.component_reference import ComponentReference
 from gdsfactory import Component
 from glayout.flow.primitives.fet import nmos, pmos, multiplier
 from glayout.flow.pdk.util.comp_utils import evaluate_bbox, prec_center, prec_ref_center
@@ -17,6 +18,26 @@ from glayout.flow.spice.netlist import Netlist
 from glayout.flow.primitives.via_gen import via_stack
 from gdsfactory.components import text_freetype, rectangle
 from four_transistor_interdigitized import generic_4T_interdigitzed
+
+def p_block_netlist(pdk: MappedPDK, pblock: tuple[float, float, int]) -> Netlist:
+    return Netlist(
+        circuit_name="p_block",
+        nodes=['MA_1_D', 'MA_2_D', 'MA_G', 'MB_1_D', 'MB_2_D', 'VDD'],
+        source_netlist=""".subckt {circuit_name} {nodes} """ + f'l={pblock[1]} wb={pblock[0]} wt={pblock[0] * pblock[2]} ' + """
+XTOP1 MB_1_D MA_1_D VDD VDD {model} l={{l}} w={{wt}} 
+XTOP2 MB_2_D MA_2_D VDD VDD {model} l={{l}} w={{wt}} 
+XBOT1 MA_1_D MA_G VDD VDD {model} l={{l}} w={{wb}} 
+XBOT2 MA_2_D MA_G VDD VDD {model} l={{l}} w={{wb}} 
+.ends {circuit_name}""",
+        instance_format="X{name} {nodes} {circuit_name} l={length} wt={width_top} wb={width_bot}",
+        parameters={
+            'model': pdk.models['pfet'],
+            'width_top': pblock[0] * pblock[2],
+            'width_bot': pblock[0],
+            'length': pblock[1],
+        }
+    )
+
 
 @cell
 def  p_block(
@@ -65,12 +86,18 @@ def  p_block(
     nwell_rectangle_ref.move(p_block_ref.center) 
     top_level.add(nwell_rectangle_ref)
 
+
     #Renaming Ports
     top_level.add_ports(p_block.get_ports_list())
+    
+    component = component_snap_to_grid(rename_ports_by_orientation(top_level))
+    component.info['netlist'] = p_block_netlist(pdk, pblock=(width,length,ratio))
+    #print(component.info['netlist'].generate_netlist())
 
-    return component_snap_to_grid(rename_ports_by_orientation(top_level))
-"""
-p_block = p_block(sky130_mapped_pdk)
-p_block.show()
-magic_drc_result = sky130_mapped_pdk.drc_magic(p_block, p_block.name)
-"""
+
+    return component
+
+#p_block = p_block(sky130_mapped_pdk)
+#p_block.show()
+#magic_drc_result = sky130_mapped_pdk.drc_magic(p_block, p_block.name)
+

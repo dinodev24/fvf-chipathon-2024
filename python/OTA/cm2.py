@@ -1,6 +1,7 @@
 from glayout.flow.pdk.mappedpdk import MappedPDK
 from glayout.flow.pdk.sky130_mapped import sky130_mapped_pdk
 from gdsfactory.component import Component
+from gdsfactory.component_reference import ComponentReference
 from gdsfactory.cell import cell
 from gdsfactory import Component
 from gdsfactory.components import text_freetype, rectangle
@@ -18,16 +19,16 @@ from fvf import fvf_netlist, flipped_voltage_follower
 from glayout.flow.primitives.via_gen import via_stack
 from typing import Optional
 
-@cell
-def low_voltage_cmirr_netlist(bias_fvf: Component, cascode_fvf: Component, fet_1A: Component, fet_1B: Component, fet_2A: Component, fet_2B: Component) -> Netlist:
+
+def low_voltage_cmirr_netlist(bias_fvf: Component, cascode_fvf: Component, fet_1_ref: ComponentReference, fet_2_ref: ComponentReference, fet_3_ref: ComponentReference, fet_4_ref: ComponentReference) -> Netlist:
 
         netlist = Netlist(circuit_name='Low_voltage_current_mirror', nodes=['IBIAS1', 'IBIAS2', 'GND', 'IOUT1', 'IOUT2'])
         netlist.connect_netlist(bias_fvf.info['netlist'], [('VIN','IBIAS1'),('VBULK','GND'),('Ib','IBIAS1')])
         netlist.connect_netlist(cascode_fvf.info['netlist'], [('VIN','IBIAS1'),('VBULK','GND'),('Ib', 'IBIAS2')])
-        fet_1A_ref=netlist.connect_netlist(fet_1A.info['netlist'], [('D', 'IOUT1'),('G','IBIAS1'),('B','GND')])
-        fet_2A_ref=netlist.connect_netlist(fet_2A.info['netlist'], [('D', 'IOUT2'),('G','IBIAS1'),('B','GND')])
-        fet_1B_ref=netlist.connect_netlist(fet_1B.info['netlist'], [('G','IBIAS2'),('S', 'GND'),('B','GND')])
-        fet_2B_ref=netlist.connect_netlist(fet_2B.info['netlist'], [('G','IBIAS2'),('S', 'GND'),('B','GND')])
+        fet_1A_ref=netlist.connect_netlist(fet_2_ref.info['netlist'], [('D', 'IOUT1'),('G','IBIAS1'),('B','GND')])
+        fet_2A_ref=netlist.connect_netlist(fet_4_ref.info['netlist'], [('D', 'IOUT2'),('G','IBIAS1'),('B','GND')])
+        fet_1B_ref=netlist.connect_netlist(fet_1_ref.info['netlist'], [('G','IBIAS2'),('S', 'GND'),('B','GND')])
+        fet_2B_ref=netlist.connect_netlist(fet_3_ref.info['netlist'], [('G','IBIAS2'),('S', 'GND'),('B','GND')])
         netlist.connect_subnets(
                 fet_1A_ref,
                 fet_1B_ref,
@@ -176,24 +177,20 @@ def  low_voltage_cmirror(
     top_level.add_ports(fet_2_ref.get_ports_list(), prefix="M_3_A_")
     top_level.add_ports(fet_3_ref.get_ports_list(), prefix="M_4_B_")
     top_level.add_ports(fet_4_ref.get_ports_list(), prefix="M_4_A_")
-    """
+    
     #for netlist
-    fet_1A = nmos(pdk, width=width[0], fingers=fingers[0], multipliers=multipliers[0], with_dummy=True, with_dnwell=False,  with_substrate_tap=False, length=length)
-    fet_1B = nmos(pdk, width=width[0], fingers=fingers[0], multipliers=multipliers[0], with_dummy=True, with_dnwell=False,  with_substrate_tap=False, length=length)
-    fet_2A = nmos(pdk, width=width[0], fingers=fingers[0], multipliers=multipliers[0], with_dummy=True, with_dnwell=False,  with_substrate_tap=False, length=length)
-    fet_2B = nmos(pdk, width=width[0], fingers=fingers[0], multipliers=multipliers[0], with_dummy=True, with_dnwell=False,  with_substrate_tap=False, length=length)
-    top_level.info['netlist'] = low_voltage_cmirr_netlist(bias_fvf, cascode_fvf, fet_1A, fet_1B, fet_2A, fet_2B)
-    """
+  
     #print(top_level.info['netlist'].generate_netlist(only_subcircuits=True))
     
     component = component_snap_to_grid(rename_ports_by_orientation(top_level))
-
+    component.info['netlist'] = low_voltage_cmirr_netlist(bias_fvf, cascode_fvf, fet_1_ref, fet_2_ref, fet_3_ref, fet_4_ref)
+    
     return component
-"""
-lvcm = low_voltage_cmirror(sky130_mapped_pdk)
-lvcm.show()
 
-lvcm.name = "lvcm"
-magic_drc_result = sky130_mapped_pdk.drc_magic(lvcm, lvcm.name)
+#lvcm = low_voltage_cmirror(sky130_mapped_pdk)
+#lvcm.show()
+
+#lvcm.name = "lvcm"
+#magic_drc_result = sky130_mapped_pdk.drc_magic(lvcm, lvcm.name)
 #netgen_lvs_result = sky130_mapped_pdk.lvs_netgen(lvcm, lvcm.name, netlist="lvcm.spice")
-"""
+

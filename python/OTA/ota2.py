@@ -2,11 +2,13 @@ from glayout.flow.pdk.mappedpdk import MappedPDK
 from glayout.flow.pdk.sky130_mapped import sky130_mapped_pdk
 from gdsfactory import Component
 from gdsfactory.cell import cell
+from gdsfactory.component_reference import ComponentReference
 
 from glayout.flow.pdk.util.comp_utils import evaluate_bbox, prec_ref_center, prec_center, align_comp_to_port
 from glayout.flow.pdk.util.port_utils import rename_ports_by_orientation
 from glayout.flow.pdk.util.snap_to_grid import component_snap_to_grid
 from gdsfactory.components import text_freetype, rectangle
+from glayout.flow.spice.netlist import Netlist
 
 
 from glayout.flow.routing.straight_route import straight_route
@@ -16,62 +18,59 @@ from fvf import fvf_netlist, flipped_voltage_follower
 from cm import current_mirror, current_mirror_netlist
 from glayout.flow.primitives.via_gen import via_stack, via_array
 from glayout.flow.primitives.fet import nmos, pmos, multiplier
-from transmission_gate import transmission_gate
-from p_block import p_block
-from n_block import n_block
+from transmission_gate import transmission_gate,tg_netlist
+from p_block import p_block,p_block_netlist
+from n_block import n_block,n_block_netlist
 #from lvt_cmirror import low_voltage_cmirror
 
-@cell
-def sky130_add_ota_labels(ota_in: Component) -> Component:
-	
-    ota_in.unlock()
-    # define layers
-    met1_pin = (68,16)
-    met1_label = (68,5)
-    met2_pin = (69,16)
-    met2_label = (69,5)
-    met3_pin = (70,16)
-    met3_label = (70,5)
-    # list that will contain all port/comp info
-    move_info = list()
-    # create labels and append to info list
-    # gnd
-    gndlabel = rectangle(layer=met2_pin,size=(0.5,0.5),centered=True).copy()
-    gndlabel.add_label(text="AVSS",layer=met2_label)
-    move_info.append((gndlabel,ota_in.ports["VSS_top_met_N"],None))
-    
-    #currentbias
-    ibias1label = rectangle(layer=met3_pin,size=(0.5,0.5),centered=True).copy()
-    ibias1label.add_label(text="NBC_10U",layer=met3_label)
-    move_info.append((ibias1label,ota_in.ports["IBIAS1_top_met_N"],None))
-    ibias2label = rectangle(layer=met3_pin,size=(0.5,0.5),centered=True).copy()
-    ibias2label.add_label(text="NB_10U",layer=met3_label)
-    move_info.append((ibias2label,ota_in.ports["IBIAS2_top_met_N"],None))
-    
-    #vcc
-    vcclabel = rectangle(layer=met2_pin,size=(0.5,0.5),centered=True).copy()
-    vcclabel.add_label(text="AVDD",layer=met2_label)
-    move_info.append((vcclabel,ota_in.ports["VCC_top_met_N"],None))
-    
-    # output (3rd stage)
-    outputlabel = rectangle(layer=met3_pin,size=(0.5,0.5),centered=True).copy()
-    outputlabel.add_label(text="VOUT",layer=met3_label)
-    move_info.append((outputlabel,ota_in.ports["DIFFOUT_top_met_N"],None))
-    
-    # input
-    p_inputlabel = rectangle(layer=met3_pin,size=(0.5,0.5),centered=True).copy()
-    p_inputlabel.add_label(text="INP",layer=met3_label)
-    move_info.append((p_inputlabel,ota_in.ports["PLUS_top_met_N"], None))   
-    m_inputlabel = rectangle(layer=met3_pin,size=(0.5,0.5),centered=True).copy()
-    m_inputlabel.add_label(text="INM",layer=met3_label)
-    move_info.append((m_inputlabel,ota_in.ports["MINUS_top_met_N"], None))
-    
-    # move everything to position
-    for comp, prt, alignment in move_info:
-        alignment = ('c','b') if alignment is None else alignment
-        compref = align_comp_to_port(comp, prt, alignment=alignment)
-        ota_in.add(compref)
-    return ota_in.flatten() 
+def super_class_AB_OTA_netlist(local_c_bias_1_ref: ComponentReference, local_c_bias_2_ref: ComponentReference, res_1_ref: ComponentReference, res_2_ref: ComponentReference, nb: Component, pblock: Component) -> Netlist:
+
+        netlist = Netlist(circuit_name='OTA', nodes=['AVDD', 'INP', 'INM', 'VOUT', 'NBC_10U', 'NB_10U', 'AVSS'])
+        pblock_ref = netlist.connect_netlist(pblock.info['netlist'], [('VDD','AVDD'),('MB_2_D','VOUT')])
+        nblock_ref = netlist.connect_netlist(nb.info['netlist'], [('IBIAS1','NBC_10U'),('IBIAS2','NB_10U'),('GND', 'AVSS'),('INP','INP'),('INM','INM'),('OUT_N_2','VOUT')])
+        cmirr_1_ref = netlist.connect_netlist(local_c_bias_1_ref.info['netlist'], [('VSS','AVDD'),('VB','AVDD')])
+        cmirr_2_ref = netlist.connect_netlist(local_c_bias_2_ref.info['netlist'], [('VSS', 'AVDD'),('VB','AVDD')])
+        res_1_ref = netlist.connect_netlist(res_1_ref.info['netlist'], [('VSS','AVSS'),('VCC','AVDD')])
+        res_2_ref = netlist.connect_netlist(res_2_ref.info['netlist'], [('VSS','AVSS'),('VCC','AVDD')])
+        
+        netlist.connect_subnets(
+            pblock_ref,
+            nblock_ref,
+            [('MA_1_D', 'Min1_D'),('MA_2_D','Min2_D'),('MB_1_D','OUT_N_1')]
+        )
+        netlist.connect_subnets(
+            pblock_ref,
+            res_1_ref,
+            [('MA_1_D', 'VIN'),('MA_G','VOUT')]
+        )
+        netlist.connect_subnets(
+            pblock_ref,
+            res_2_ref,
+            [('MA_2_D', 'VIN'),('MA_G','VOUT')]
+        )
+        netlist.connect_subnets(
+            nblock_ref,
+            res_1_ref,
+            [('Min1_D', 'VIN')]
+        )
+        netlist.connect_subnets(
+            nblock_ref,
+            res_2_ref,
+            [('Min2_D', 'VIN')]
+        )
+        netlist.connect_subnets(
+            nblock_ref,
+            cmirr_1_ref,
+            [('ILCM1', 'VREF'),('IFVF1','VCOPY')]
+        )
+        netlist.connect_subnets(
+            nblock_ref,
+            cmirr_2_ref,
+            [('ILCM2', 'VREF'),('IFVF2','VCOPY')]
+        )
+
+        return netlist
+
 
 @cell
 def super_class_AB_OTA(
@@ -279,7 +278,9 @@ def super_class_AB_OTA(
     top_level.add_ports(GND_via.get_ports_list(), prefix="VSS_")
 
     component = component_snap_to_grid(rename_ports_by_orientation(top_level))
-    
+    component.info['netlist'] = super_class_AB_OTA_netlist(local_c_bias_1_ref, local_c_bias_2_ref, res_1_ref, res_2_ref, nb, pblock)
+    print(component.info['netlist'].generate_netlist())
+
     return component
 """
 OTA = sky130_add_ota_labels(super_class_AB_OTA(sky130_mapped_pdk))
